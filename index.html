@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Paris</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+        }
+        .countdown {
+            font-size: 2rem;
+            margin: 30px 0;
+        }
+        .info {
+            font-size: 1.2rem;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+        .download {
+            margin: 30px 0;
+        }
+        .download a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .download a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Countdown to Paris</h1>
+        <p>Your magical journey begins soon!</p>
+    </header>
+
+    <div class="countdown">
+        <p id="timer">Loading countdown...</p>
+    </div>
+
+    <div class="info">
+        <p><strong>Departure Date:</strong> 15th February 2025</p>
+        <p><strong>Highlights of Paris:</strong></p>
+        <ul>
+            <li>Explore the Eiffel Tower</li>
+            <li>Stroll along the Seine</li>
+            <li>Visit the Louvre and Montmartre</li>
+            <li>Indulge in French cuisine and wine</li>
+        </ul>
+    </div>
+
+    <div class="download">
+        <p>Download your itinerary:</p>
+        <a href="Paris_Itinerary.pdf" download>Download Itinerary</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Paris Adventure</p>
+    </footer>
+
+    <script>
+        // Countdown timer script
+        const targetDate = new Date('February 15, 2025 00:00:00').getTime();
+
+        const countdown = () => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML =
+                `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left!`;
+
+            if (difference < 0) {
+                clearInterval(interval);
+                document.getElementById("timer").innerHTML = "It's time for Paris!";
+            }
+        };
+
+        const interval = setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
