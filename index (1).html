@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nedtelling til Paris</title>
+    <style>
+        @font-face {
+            font-family: 'Chaucer';
+            src: url('https://fonts.cdnfonts.com/s/16229/Chaucer-Regular.ttf') format('truetype');
+        }
+        body {
+            font-family: 'Chaucer', Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #FFC0CB;
+            color: white;
+            padding: 20px 0;
+        }
+        .countdown {
+            font-size: 2rem;
+            margin: 30px 0;
+        }
+        .info {
+            font-size: 1.2rem;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .bucketlist {
+            font-size: 1.2rem;
+            margin: 20px auto;
+            width: 80%;
+            text-align: left;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nedtelling til Paris</h1>
+    </header>
+
+    <div class="countdown">
+        <p id="timer">Laster nedtelling...</p>
+    </div>
+
+    <div class="info">
+        <p><strong>Avreisedato:</strong> 19. mai 2025</p>
+    </div>
+
+    <div class="bucketlist">
+        <p><strong>Bucketlist for Paris:</strong></p>
+        <ul>
+            <li><label><input type="checkbox"> Eiffel Tower</label></li>
+            <li><label><input type="checkbox"> Louvre Museum</label></li>
+            <li><label><input type="checkbox"> Walk the Champs-Élysées</label></li>
+            <li><label><input type="checkbox"> Notre Dame Cathedral</label></li>
+            <li><label><input type="checkbox"> Eat Le Crepe</label></li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Din Paris-opplevelse</p>
+    </footer>
+
+    <script>
+        // Nedtellingstimer script
+        const targetDate = new Date('May 19, 2025 00:00:00').getTime();
+
+        const countdown = () => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML =
+                `${days} dager, ${hours} timer, ${minutes} minutter, og ${seconds} sekunder igjen!`;
+
+            if (difference < 0) {
+                clearInterval(interval);
+                document.getElementById("timer").innerHTML = "Det er tid for Paris!";
+            }
+        };
+
+        const interval = setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
