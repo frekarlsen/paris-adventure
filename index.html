@@ -1,19 +1,24 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown to Paris</title>
+    <title>Nedtelling til Paris</title>
     <style>
+        @font-face {
+            font-family: 'Chaucer';
+            src: url('https://fonts.cdnfonts.com/s/16229/Chaucer-Regular.ttf') format('truetype');
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Chaucer', Arial, sans-serif;
             text-align: center;
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #4CAF50;
+            background-color: #FFC0CB;
             color: white;
             padding: 20px 0;
         }
@@ -31,54 +36,35 @@
             font-size: 0.8rem;
             color: #777;
         }
-        .download {
-            margin: 30px 0;
-        }
-        .download a {
-            text-decoration: none;
-            color: white;
-            background-color: #4CAF50;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-        .download a:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Countdown to Paris</h1>
-        <p>Your magical journey begins soon!</p>
+        <h1>Nedtelling til Paris</h1>
     </header>
 
     <div class="countdown">
-        <p id="timer">Loading countdown...</p>
+        <p id="timer">Laster nedtelling...</p>
     </div>
 
     <div class="info">
-        <p><strong>Departure Date:</strong> 15th February 2025</p>
-        <p><strong>Highlights of Paris:</strong></p>
+        <p><strong>Avreisedato:</strong> 19. mai 2025</p>
+        <p><strong>Høydepunkter i Paris:</strong></p>
         <ul>
-            <li>Explore the Eiffel Tower</li>
-            <li>Stroll along the Seine</li>
-            <li>Visit the Louvre and Montmartre</li>
-            <li>Indulge in French cuisine and wine</li>
+            <li>Utforsk Eiffeltårnet</li>
+            <li>Spaser langs Seinen</li>
+            <li>Besøk Louvre og Montmartre</li>
+            <li>Nyt fransk mat og vin</li>
         </ul>
     </div>
 
-    <div class="download">
-        <p>Download your itinerary:</p>
-        <a href="Paris_Itinerary.pdf" download>Download Itinerary</a>
-    </div>
-
     <footer>
-        <p>&copy; 2024 Your Paris Adventure</p>
+        <p>&copy; 2024 Din Paris-opplevelse</p>
     </footer>
 
     <script>
-        // Countdown timer script
-        const targetDate = new Date('February 15, 2025 00:00:00').getTime();
+        // Nedtellingstimer script
+        const targetDate = new Date('May 19, 2025 00:00:00').getTime();
 
         const countdown = () => {
             const now = new Date().getTime();
@@ -90,11 +76,11 @@
             const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
             document.getElementById("timer").innerHTML =
-                `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left!`;
+                `${days} dager, ${hours} timer, ${minutes} minutter, og ${seconds} sekunder igjen!`;
 
             if (difference < 0) {
                 clearInterval(interval);
-                document.getElementById("timer").innerHTML = "It's time for Paris!";
+                document.getElementById("timer").innerHTML = "Det er tid for Paris!";
             }
         };
 
